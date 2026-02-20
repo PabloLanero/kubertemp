@@ -1,25 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: students-frontend
+  name: tempfront
   labels:
-    app: students
+    app: tempfront
     tier: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: students
+      app: tempfront
       tier: frontend
   template:
     metadata:
       labels:
-        app: students
+        app: tempfront
         tier: frontend
     spec:
       containers:
-      - name: contenedor-students
-        image: fronted-image
+      - name: tempfront
+        image: lanero/examen:frontTemp
         ports:
           - name: http-front
-            containerPort: 80
+            containerPort: 3002
+        env:
+            - name: "TEMP_SERVER"
+              value: "a3b5477e522fa4866a69291afeba2864-263573729.us-east-1.elb.amazonaws.com:5000" 

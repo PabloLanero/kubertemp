@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: students-backend
+  name: tempback-backend
   labels:
-    app: students
+    app: tempback
     tier: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: students
+      app: tempback
       tier: backend
   template:
     metadata:
       labels:
-        app: students
+        app: tempback
         tier: backend
     spec:
       containers:
-        - name: backend
+        - name: tempback
           image: lanero/examen:backTemp
           ports:
             - name: api-server
