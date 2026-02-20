@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: students-backend
+  labels:
+    app: students
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: students
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: students
+        tier: backend
+    spec:
+      containers:
+        - name: backend
+          image: lanero/examen:backTemp
+          ports:
+            - name: api-server
+              containerPort: 5000
+          env:
+            - name: "FLASK_ENV"
+              value: "development" 
+
+
+
